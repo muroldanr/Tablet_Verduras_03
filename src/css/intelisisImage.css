@@ -1,0 +1,17 @@
+
+div.sphere {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(11, 151, 216);
+  background: radial-gradient(at top left, #009AFE 20%, #0066CC);
+  -ms-border-radius: 150px;
+  -moz-border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -o-border-radius: 150px;
+  border-radius: 150px;
+  margin: 0px auto;
+}
+
+div.sphere:hover {
+  transform: scale(1.1);
+}

@@ -1,0 +1,93 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'DM Sans', sans-serif;
+}
+
+* {
+  font-family: 'DM Sans', sans-serif !important;
+}
+
+/* MENU */ 
+
+.ant-menu-item-selected .anticon {
+  background: linear-gradient(310deg, rgb(255,144,107), rgb(255,144,107)) !important;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+  transition: background 0.5s ease !important;
+}
+
+.ant-menu-submenu-selected .ant-menu-submenu-title .anticon{
+  background: linear-gradient(310deg, rgb(246, 64, 64), rgb(176, 32, 32)) !important;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+  transition: background 0.5s ease;
+}
+
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: rgba(237,109,70)!important;
+  
+}
+
+.ant-menu-item-selected a, .ant-menu-item-selected a:hover {
+  color: rgb(0,0,0)!important;
+}
+
+.ant-menu-item a:hover {
+  color: rgb(0, 0, 0,)!important;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: rgba(237,109,70)!important;
+}
+
+.ant-menu-inline .ant-menu-item::after {
+  border-right: 3px solid rgb(240,69,33) !important;
+}
+
+.ant-menu-item-selected .anticon svg{
+  color:black;
+  font-size: 20px;
+}
+
+.ant-menu-submenu-selected .ant-menu-submenu-title .anticon svg{
+  color:black;
+  font-size: 20px;
+}
+
+.ant-menu-item{
+  height: 55px !important;
+}
+
+.paperBody {
+  color: rgba(0, 0, 0, 0.87);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0px;
+  overflow-wrap: break-word;
+  background-clip: border-box;
+  border: 0px solid rgba(0, 0, 0, 0.125)  !important;
+  border-radius: 1rem  !important;
+  backdrop-filter: saturate(200%) blur(30px) !important;
+  background-color: rgba(255, 255, 255, 0.6)  !important;
+  box-shadow: rgb(255 255 255 / 90%) 0rem 0rem 0.0625rem 0.0625rem inset, rgb(0 0 0 / 5%) 0rem 1.25rem 1.6875rem 0rem  !important;
+  position: relative  !important;
+  margin-top: -40px  !important;
+  margin-left: 40px  !important;
+  margin-right: 40px !important;
+  padding: 16px;
+
+}
+

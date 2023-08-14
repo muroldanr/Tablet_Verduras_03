@@ -1,0 +1,19 @@
+EXEC spWebClienteLista 'DROLDAN'
+EXEC spWebClienteLista
+   @UsuarioWeb varchar(20)
+
+EXEC spWebTipoUnidadLista 'MASERP', 'TEB'
+EXEC spWebTipoUnidadLista
+           @UsuarioWeb varchar(20), 
+		   @Empresa    char(5)
+
+EXEC spWebCteEnviarALista 'MASERP', 'C001'
+EXEC spWebCteEnviarALista
+   @UsuarioWeb varchar(20), 
+   @Cliente    varchar(10)
+
+EXEC spCotizadorCosto 'TEB',  '30/06/2022', 'Autobús'
+EXEC spCotizadorCosto
+          @Empresa      char(5), 
+          @Fecha        datetime, 
+          @tUnidad      varchar(50)
