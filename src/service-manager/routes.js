@@ -2,8 +2,8 @@
 //const BD = "CPARRAS"
 const BD = "PRODUCCION"
 //const BASE_URL = "http://b3903.online-server.cloud:8080/"
-const BASE_URL = "http://192.168.0.184:8001/"
-//const BASE_URL = "http://187.209.196.255:8001/"
+//const BASE_URL = "http://192.168.0.184:8001/"
+const BASE_URL = "http://187.156.19.160:8001/"
 
 
 const endpoints = Object.freeze({

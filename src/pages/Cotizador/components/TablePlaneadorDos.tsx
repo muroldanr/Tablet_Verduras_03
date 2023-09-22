@@ -72,8 +72,35 @@ export const TablePlaneadorDos: React.FC<TablePlaneadorDosProps> = ({ dataPass }
   }, [])
 
 
+
   //LOGICA
 
+  // useEffect(() => {
+  //   setLoading(true)
+  //   manager.postData(routes.GET_CUARTOS_FRIOS, { "WebUsuario": localStorage.getItem("usuario") })
+  //     .then(response => {
+  //       if (response.length > 0) {
+  //         setCuartosFrios(response);
+  //         getPlaneador();
+  //         setLoading(false);
+  //       }
+  //       else {
+  //         //swal("Verifique su request");
+
+  //         setCuartosFrios(response)
+  //         getPlaneador();
+  //         setLoading(false)
+  //       }
+  //     })
+  //     .catch(error => {
+  //       swal(error.data.Mensaje, '', "error");
+  //     });
+  // }, [])
+
+
+  useEffect(() => {
+    getPlaneador();
+  }, [])
 
 
   const getPlaneador = () => {
@@ -85,8 +112,9 @@ export const TablePlaneadorDos: React.FC<TablePlaneadorDosProps> = ({ dataPass }
           setDataPlaneador(response);
           setLoading(false);
         } else {
-          setLoading(false);
           setDataPlaneador(response);
+          setLoading(false);
+  
         }
       })
       .catch((error) => {
@@ -249,7 +277,7 @@ export const TablePlaneadorDos: React.FC<TablePlaneadorDosProps> = ({ dataPass }
           FirstPage: forwardRef((props, ref) => <SkipPreviousIcon {...props} ref={ref} />),
           Filter: forwardRef((props, ref) => <FilterListIcon {...props} ref={ref} />),
           SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref} />),
-          Edit: forwardRef((props, ref) => <Edit style={{ marginTop: '270px', position: 'absolute', color: '#FFF', zIndex: 100 }}{...props} ref={ref} />),
+          Edit: forwardRef((props, ref) => <Edit style={{ marginTop: '130px', position: 'absolute', color: '#FFF', zIndex: 100 }}{...props} ref={ref} />),
           Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
           Clear: forwardRef((props, ref) => <Cancel {...props} ref={ref} />),
           Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
@@ -341,7 +369,7 @@ export const TablePlaneadorDos: React.FC<TablePlaneadorDosProps> = ({ dataPass }
             title: 'Unidad',
             field: 'Unidad',
             editable: 'never',
-            sorting: false,
+            //sorting: false,
             width: '10%',
             cellStyle: { width: '10%', textAlign: 'left', fontSize: '25px' },
             headerStyle: { fontSize: '25px' },
@@ -373,20 +401,16 @@ export const TablePlaneadorDos: React.FC<TablePlaneadorDosProps> = ({ dataPass }
             ),
           },
 
-
-
-
-
         ]}
         components={{
           Toolbar: props => (
             <div>
-              <Button onClick={handlePrint} style={{ backgroundColor: '#F04521', color: 'white', float: 'left', marginTop: '15px', marginLeft: '15px' }}>
+              <Button onClick={handlePrint} style={{ backgroundColor: '#F04521', color: 'white', float: 'left', marginTop: '10px', marginLeft: '10px' }}>
                 <PrintIcon style={{ color: 'white', marginRight: '8px', fontSize: 35 }} />
                 <span style={{ marginLeft: '8px', fontSize: 18 }}>Imprimir</span>
               </Button>
               <MTableToolbar {...props} />
-              <div style={{ padding: '0px 10px' }}>
+              {/* <div style={{ padding: '0px 10px' }}>
                 <nav aria-label="main mailbox folders">
                   <List style={{ display: 'flex', overflowX: 'scroll', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                     {cuartorFrios.map((item, index) => (
@@ -414,7 +438,7 @@ export const TablePlaneadorDos: React.FC<TablePlaneadorDosProps> = ({ dataPass }
                     ))}
                   </List>
                 </nav>
-              </div>
+              </div> */}
 
             </div>
           ),
