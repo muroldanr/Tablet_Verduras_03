@@ -49,13 +49,11 @@ function App() {
           secondary:{main:'#b08320'},
           */
           primary: {
-            main: '#F04521',
+            main: '#DA1C36',
           },
           secondary: {
             main: '#ffffff',
           },
-
-
         },
       }),
     [themeMode],
@@ -76,14 +74,14 @@ function App() {
       <Layout style={{ minHeight: '100vh' }}>
         <ThemeProvider theme={theme}>
           <CssBaseline>
-          <Routes>
-            <Route path="/" element={<Navigate to="/Login" />} /> {/* Redirige a la página de inicio de sesión */}
-            <Route path="/Login" element={<LoginPage />} />
-            <Route path="/" element={<RequireAuth><PrincipalPage change={() => setThemeMode(!themeMode)} /></RequireAuth>}>
-              <Route path="/Existencias" element={<RequireAuth><PlaneadorDosPage /></RequireAuth>} />
-              {/*<Route path="/Planeador2" element={<RequireAuth><PlaneadorDosPage /></RequireAuth>} />*/}
-            </Route>
-          </Routes>
+            <Routes>
+              <Route path="/" element={<Navigate to="/Login" />} /> {/* Redirige a la página de inicio de sesión */}
+              <Route path="/Login" element={<LoginPage />} />
+              <Route path="/" element={<RequireAuth><PrincipalPage change={() => setThemeMode(!themeMode)} /></RequireAuth>}>
+                <Route path="/Existencias" element={<RequireAuth><PlaneadorDosPage /></RequireAuth>} />
+                {/*<Route path="/Planeador2" element={<RequireAuth><PlaneadorDosPage /></RequireAuth>} />*/}
+              </Route>
+            </Routes>
           </CssBaseline>
         </ThemeProvider>
       </Layout>

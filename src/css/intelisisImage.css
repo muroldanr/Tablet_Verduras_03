@@ -2,8 +2,8 @@
 div.sphere {
   width: 100px;
   height: 100px;
-  background-color: rgb(11, 151, 216);
-  background: radial-gradient(at top left, #009AFE 20%, #0066CC);
+  background-color: rgb(218, 28, 54);
+  background: radial-gradient(at top left, #c43c39 20%, #DA1C36);
   -ms-border-radius: 150px;
   -moz-border-radius: 150px;
   -webkit-border-radius: 150px;

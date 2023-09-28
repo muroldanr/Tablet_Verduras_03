@@ -32,6 +32,7 @@ import Loading from '../components/Loading';
 import PrintIcon from '@mui/icons-material/Print';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable'
+import imagenBase64 from './Imagen64.js';
 
 
 
@@ -114,7 +115,7 @@ export const TablePlaneadorDos: React.FC<TablePlaneadorDosProps> = ({ dataPass }
         } else {
           setDataPlaneador(response);
           setLoading(false);
-  
+
         }
       })
       .catch((error) => {
@@ -200,6 +201,42 @@ export const TablePlaneadorDos: React.FC<TablePlaneadorDosProps> = ({ dataPass }
   const handlePrint = () => {
     const doc = new jsPDF();
 
+    // Configura el documento
+    doc.setFont('Arial', 'bold'); // Establecer el estilo de fuente en negritas
+    doc.setFontSize(15);
+    doc.setTextColor(0, 0, 0); // Establecer el color del texto en negro
+
+    const text = 'INVENTARIO FRUTAS Y VERDURAS';
+    const imgSizeHeight = 30; // Tamaño cuadrado de la imagen
+    const imgSizeWidth = 20; // Tamaño cuadrado de la imagen
+
+    // Añade la imagen en la esquina superior izquierda
+    doc.addImage(imagenBase64, 'JPEG', 15, 5, imgSizeHeight, imgSizeWidth);
+
+    // Añade el texto a la derecha de la imagen
+    doc.text(text, 60, 20);
+
+    // Obtén la fecha actual
+    const today = new Date();
+    const day = today.getDate().toString().padStart(2, '0'); // Día en formato de 2 dígitos
+    const monthNames = [
+      "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO",
+      "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"
+    ];
+    const month = monthNames[today.getMonth()]; // Nombre del mes
+    const year = today.getFullYear(); // Año
+
+    const formattedDate = `${day}-${month}-${year}`; // Formatea la fecha
+
+    //Style texto de fecha
+    doc.setFont('Arial', 'normal');
+    doc.setFontSize(11);
+    doc.setTextColor(0, 0, 0);
+
+    // Añade la fecha al documento
+    doc.text(formattedDate, 155, 8);
+
+
     const tableData = dataPlaneador.map((item) => [
       item.Descripcion,
       item.Cantidad,
@@ -216,7 +253,7 @@ export const TablePlaneadorDos: React.FC<TablePlaneadorDosProps> = ({ dataPass }
         lineWidth: 0.5, // Ancho de las líneas de la cuadrícula
       },
       headStyles: {
-        fillColor: [240, 69, 33], // Color de fondo de la fila de encabezado en RGB (240, 69, 33)
+        fillColor: [218, 28, 54], // Color de fondo de la fila de encabezado en RGB (240, 69, 33)
         textColor: [255, 255, 255], // Color del texto en la fila de encabezado en blanco
       },
       bodyStyles: {
@@ -225,6 +262,7 @@ export const TablePlaneadorDos: React.FC<TablePlaneadorDosProps> = ({ dataPass }
       columnStyles: {
         3: { fillColor: [255, 255, 255] }, // Establece el color de fondo para la columna de "Pedido" en blanco
       },
+      startY: 30 // Ajusta la posición vertical de la tabla para evitar superponer el texto y la imagen
     });
 
     doc.save('reporte.pdf');
@@ -249,7 +287,7 @@ export const TablePlaneadorDos: React.FC<TablePlaneadorDosProps> = ({ dataPass }
           }),
 
           headerStyle: {
-            backgroundColor: "#F04521",
+            backgroundColor: "#DA1C36",
             fontWeight: "bold",
             textAlign: 'left',
             fontSize: '18px',
@@ -277,7 +315,7 @@ export const TablePlaneadorDos: React.FC<TablePlaneadorDosProps> = ({ dataPass }
           FirstPage: forwardRef((props, ref) => <SkipPreviousIcon {...props} ref={ref} />),
           Filter: forwardRef((props, ref) => <FilterListIcon {...props} ref={ref} />),
           SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref} />),
-          Edit: forwardRef((props, ref) => <Edit style={{ marginTop: '130px', position: 'absolute', color: '#FFF', zIndex: 100 }}{...props} ref={ref} />),
+          Edit: forwardRef((props, ref) => <Edit {...props} ref={ref} />),
           Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
           Clear: forwardRef((props, ref) => <Cancel {...props} ref={ref} />),
           Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
@@ -287,6 +325,16 @@ export const TablePlaneadorDos: React.FC<TablePlaneadorDosProps> = ({ dataPass }
 
         }}
         data={dataPlaneador}
+        actions={[
+          {
+            icon: () => <PrintIcon />, // Utiliza una función para renderizar el ícono de impresión
+            tooltip: 'Imprimir',
+            isFreeAction: true,
+            onClick: (event) => {
+              handlePrint();
+            }
+          }
+        ]}
         columns={[
           {
             title: 'Artículo',
@@ -405,10 +453,7 @@ export const TablePlaneadorDos: React.FC<TablePlaneadorDosProps> = ({ dataPass }
         components={{
           Toolbar: props => (
             <div>
-              <Button onClick={handlePrint} style={{ backgroundColor: '#F04521', color: 'white', float: 'left', marginTop: '10px', marginLeft: '10px' }}>
-                <PrintIcon style={{ color: 'white', marginRight: '8px', fontSize: 35 }} />
-                <span style={{ marginLeft: '8px', fontSize: 18 }}>Imprimir</span>
-              </Button>
+
               <MTableToolbar {...props} />
               {/* <div style={{ padding: '0px 10px' }}>
                 <nav aria-label="main mailbox folders">

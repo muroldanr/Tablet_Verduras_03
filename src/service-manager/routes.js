@@ -27,13 +27,6 @@ const endpoints = Object.freeze({
     spWebCamaraPedidoCantidad: "api/" + BD + "/sp/spWebCamaraPedidoCantidad",
     spWebLocalizacionLista: "api/" + BD + "/sp/spWebLocalizacionLista",
 
-
-
-
-
-
-
-
 });
 
 const routes = {

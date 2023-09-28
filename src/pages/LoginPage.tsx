@@ -155,7 +155,7 @@ export const LoginPage = () => {
 
   const CardCustom = styled(Card)<CardProps>(({ theme }) => ({
     borderRadius: '20px',
-    backgroundImage: 'linear-gradient(310deg,  rgb(240, 69, 33),rgb(255,255,255))'
+    backgroundImage: 'linear-gradient(310deg,  rgb(218, 28, 54),rgb(255,255,255))'
 
   }));
 
